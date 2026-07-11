@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Parmly Store 專為服務行業打造預約、客戶及財務管理應用程式——由美甲店專用嘅 NailDesk 開始，未來將推出更多行業專屬應用。">
+<meta property="og:locale" content="zh_HK">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parmly Store — Business Apps for Service Professionals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+(function(){
+  try{
+    var saved = localStorage.getItem('parmly_lang_hk');
+    var lang = (saved === 'en' || saved === 'cn' || saved === 'tc') ? saved : 'tc';
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'cn' ? 'zh-Hans' : 'zh-Hant');
+  }catch(e){
+    document.documentElement.setAttribute('data-lang','tc');
+  }
+})();
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --nude:#C2A28E;--nude-deep:#9C7A62;--nude-light:#F4EEE6;
+  --sidebar:#B8AB9E;
+  --cream:#FAF8F6;--grey:#9C8E84;--grey-light:#E8E0D8;
+  --espresso:#2C2420;--white:#FFFFFF;
+  --green:#7C9583;--green-light:#EEF3EF;
+  --rust:#C97B5F;--rust-light:#F3E5DE;
+  --blue:#6E85A3;--blue-light:#E9EDF2;
+  --plum:#8B5D73;--plum-light:#F0E4E9;
+  --fd:'Playfair Display',Georgia,serif;
+  --fs:'Dancing Script',cursive;
+  --fb:'Inter',system-ui,sans-serif;
+  --fcn:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  --fct:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--cream);color:var(--espresso);line-height:1.6}
+.cn{font-family:var(--fcn)}
+.tc{font-family:var(--fct)}
+html[data-lang="tc"] .en,html[data-lang="tc"] .cn{display:none}
+html[data-lang="en"] .cn,html[data-lang="en"] .tc{display:none}
+html[data-lang="cn"] .en,html[data-lang="cn"] .tc{display:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:68px;background:rgba(250,248,246,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grey-light)}
+.nav-logo{font-family:var(--fs);font-size:1.7rem;font-weight:700;color:var(--nude-deep);text-decoration:none}
+.nav-right{display:flex;align-items:center;gap:14px}
+.region-switch{display:flex;border:1.5px solid var(--grey-light);border-radius:20px;overflow:hidden}
+.region-switch a{padding:6px 14px;font-size:.76rem;font-weight:700;letter-spacing:.05em;text-decoration:none;color:var(--grey)}
+.region-switch a.active{background:var(--espresso);color:var(--white)}
+.lang-switch{padding:8px 16px;border:1.5px solid var(--nude-deep);background:transparent;color:var(--espresso);border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:var(--fb);line-height:1}
+.lang-switch:hover{background:var(--nude-light)}
+.ncta{padding:8px 20px;background:var(--espresso);color:var(--white);border-radius:6px;font-size:.82rem;font-weight:500;text-decoration:none}
+.ncta:hover{background:#4a4038}
+
+.hero{min-height:92vh;display:flex;align-items:center;padding:110px 5vw 60px;position:relative;overflow:hidden}
+.hero-arc{position:absolute;top:-15%;right:-10%;width:58vw;height:85vh;border-radius:50%;background:var(--nude-light);z-index:0;opacity:.65;animation:breathe 9s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.05) translateY(-18px)}}
+.hero-in{position:relative;z-index:1;max-width:600px}
+.eyebrow{display:inline-block;font-size:.73rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--grey);margin-bottom:18px}
+.hero h1{font-family:var(--fd);font-size:clamp(2.1rem,4.6vw,3.3rem);font-weight:400;line-height:1.3;color:var(--espresso);margin-bottom:20px}
+html[data-lang="tc"] .hero h1,html[data-lang="cn"] .hero h1{font-family:var(--fct);font-weight:600}
+html[data-lang="cn"] .hero h1{font-family:var(--fcn)}
+.hero h1 em{font-style:italic;color:var(--nude-deep)}
+html[data-lang="tc"] .hero h1 em,html[data-lang="cn"] .hero h1 em{font-style:normal}
+.hero-sub{font-size:1.02rem;color:var(--grey);margin-bottom:22px;font-weight:300;line-height:1.72;max-width:480px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--espresso);color:var(--white);padding:8px 18px;border-radius:20px;font-size:.8rem;font-weight:500;margin-bottom:28px}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--nude)}
+.hbtns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.bp{padding:13px 30px;background:var(--espresso);color:var(--white);border-radius:6px;font-size:.88rem;font-weight:500;text-decoration:none;cursor:pointer;border:none;font-family:inherit}
+.bp:hover{background:#4a4038}
+.bo{padding:13px 30px;border:1.5px solid var(--nude-deep);color:var(--espresso);border-radius:6px;font-size:.88rem;font-weight:500;text-decoration:none;background:transparent}
+.bo:hover{background:var(--nude-light)}
+.hero-stats{display:flex;gap:32px;padding-top:28px;border-top:1px solid var(--grey-light)}
+.stat-num{font-family:var(--fd);font-size:1.7rem;font-weight:600;color:var(--espresso)}
+.stat-label{font-size:.72rem;color:var(--grey);margin-top:2px}
+
+section{padding:80px 5vw}
+.slabel{font-size:.71rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--nude-deep);margin-bottom:12px}
+.stitle{font-family:var(--fd);font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:400;color:var(--espresso);line-height:1.35;margin-bottom:14px}
+html[data-lang="tc"] .stitle,html[data-lang="cn"] .stitle{font-weight:600}
+html[data-lang="tc"] .stitle{font-family:var(--fct)}
+html[data-lang="cn"] .stitle{font-family:var(--fcn)}
+.ssub{font-size:.97rem;color:var(--grey);max-width:560px;line-height:1.72}
+
+/* PRODUCTS */
+.products{background:var(--white)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;margin-top:46px}
+.pcard{border-radius:14px;border:1.5px solid var(--grey-light);background:var(--cream);padding:28px 24px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+.pcard.live{border-color:var(--nude-deep)}
+.pcard:hover{transform:translateY(-3px)}
+.paccent{position:absolute;top:0;left:0;right:0;height:5px}
+.pcard.p-nail .paccent{background:var(--nude-deep)}
+.pcard.p-train .paccent{background:var(--rust)}
+.pcard.p-pilates .paccent{background:var(--green)}
+.pcard.p-tutor .paccent{background:var(--blue)}
+.pcard.p-salon .paccent{background:var(--plum)}
+.pname{font-family:var(--fd);font-size:1.4rem;font-weight:600;color:var(--espresso);margin-top:10px;margin-bottom:4px}
+.ptag{font-size:.78rem;color:var(--grey);font-weight:500;margin-bottom:14px}
+html[data-lang="tc"] .ptag{font-family:var(--fct)}
+html[data-lang="cn"] .ptag{font-family:var(--fcn)}
+.pdesc{font-size:.87rem;color:var(--grey);line-height:1.6;margin-bottom:20px;flex:1}
+html[data-lang="tc"] .pdesc{font-family:var(--fct)}
+html[data-lang="cn"] .pdesc{font-family:var(--fcn)}
+.pstatus{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:14px;margin-bottom:16px;width:fit-content}
+.pstatus.live{background:var(--nude-light);color:var(--nude-deep)}
+.pstatus.soon{background:var(--grey-light);color:var(--grey)}
+.pstatus-dot{width:6px;height:6px;border-radius:50%}
+.pstatus.live .pstatus-dot{background:var(--nude-deep)}
+.pstatus.soon .pstatus-dot{background:var(--grey)}
+.plink{font-size:.85rem;font-weight:600;color:var(--espresso);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.plink:hover{color:var(--nude-deep)}
+
+/* ABOUT / WHY */
+.about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2px;margin-top:46px;border:2px solid var(--grey-light);border-radius:12px;overflow:hidden}
+.about-card{padding:28px 24px;background:var(--white)}
+.about-num{font-family:var(--fd);font-size:1.4rem;font-weight:600;color:var(--nude-deep);margin-bottom:10px}
+.about-card h3{font-family:var(--fd);font-size:1.05rem;font-weight:600;margin-bottom:7px}
+html[data-lang="tc"] .about-card h3{font-family:var(--fct)}
+html[data-lang="cn"] .about-card h3{font-family:var(--fcn)}
+.about-card p{font-size:.85rem;color:var(--grey);line-height:1.62}
+
+/* CONTACT */
+.contact{background:var(--espresso);color:var(--white);text-align:center}
+.contact .stitle{color:var(--white)}
+.contact .ssub{color:rgba(255,255,255,.65);margin:0 auto 28px}
+.contact .bp{background:var(--nude);color:var(--espresso)}
+.contact .bp:hover{background:var(--nude-deep);color:var(--white)}
+
+footer{padding:40px 5vw;border-top:1px solid var(--grey-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.flogo{font-family:var(--fs);font-size:1.3rem;color:var(--nude-deep)}
+.flinks{display:flex;gap:26px;flex-wrap:wrap}
+.flinks a{font-size:.82rem;color:var(--grey);text-decoration:none}
+.flinks a:hover{color:var(--espresso)}
+.fcopy{font-size:.78rem;color:var(--grey)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Parmly Store</a>
+  <div class="nav-right">
+    <div class="region-switch">
+      <a href="/">AU</a>
+      <a href="/hk/" class="active">HK</a>
+    </div>
+    <button id="langToggle" class="lang-switch" type="button" onclick="toggleLang()">EN</button>
+    <a class="ncta" href="mailto:account@ollieconsult.com?subject=Parmly%20Store%20Enquiry"><span class="en">Get in touch</span><span class="cn">联系我们</span><span class="tc">聯絡我們</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-arc"></div>
+  <div class="hero-in">
+    <div class="eyebrow"><span class="en">One Brand · Many Apps</span><span class="cn">一个品牌，多个应用程序</span><span class="tc">一個品牌．多個應用程式</span></div>
+    <h1>
+      <span class="en">Business apps built for <em>how service businesses actually run.</em></span>
+      <span class="cn">为服务行业实际运作方式<br><em>而设的商业应用程序。</em></span>
+      <span class="tc">為服務行業實際運作方式<br><em>而設嘅商業應用程式。</em></span>
+    </h1>
+    <p class="hero-sub">
+      <span class="en">Booking, clients, and finances — Parmly Store builds a focused app for each industry, so you're never wrestling with software that wasn't made for you.</span>
+      <span class="cn">预约、客户管理、财务——Parmly Store 为每个行业打造专属应用程序，让你不必再将就不适合自己生意的软件。</span>
+      <span class="tc">預約、客戶管理、財務——Parmly Store 為每個行業打造專屬應用程式，等你唔使再將就唔適合自己生意嘅軟件。</span>
+    </p>
+    <div class="badge"><div class="badge-dot"></div><span class="en">Built in Australia, for real businesses</span><span class="cn">源自澳大利亚，为真实企业而设</span><span class="tc">源自澳洲，為真實生意而設</span></div>
+    <div class="hbtns">
+      <a class="bp" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" style="cursor:pointer"><span class="en">Explore Our Apps</span><span class="cn">查看我们的应用程序</span><span class="tc">睇睇我哋嘅應用程式</span></a>
+      <a class="bo" href="mailto:account@ollieconsult.com?subject=Parmly%20Store%20Enquiry"><span class="en">Ask a Question</span><span class="cn">咨询</span><span class="tc">查詢</span></a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">1</div><div class="stat-label"><span class="en">App live today</span><span class="cn">已上线应用</span><span class="tc">現已推出嘅應用</span></div></div>
+      <div><div class="stat-num">4</div><div class="stat-label"><span class="en">In the works</span><span class="cn">开发中</span><span class="tc">開發中</span></div></div>
+      <div><div class="stat-num">2</div><div class="stat-label"><span class="en">Regions — AU &amp; HK</span><span class="cn">服务地区——澳洲及香港</span><span class="tc">服務地區——澳洲及香港</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="slabel"><span class="en">Our Apps</span><span class="cn">我们的应用程序</span><span class="tc">我哋嘅應用程式</span></div>
+  <div class="stitle">
+    <span class="en">One app per industry. Built to fit, not to configure.</span>
+    <span class="cn">一个行业，一个应用程序。贴合你的生意，无需将就设置。</span>
+    <span class="tc">一個行業，一個應用程式。為貼合你嘅生意而設，唔使你將就設定。</span>
+  </div>
+  <div class="ssub">
+    <span class="en">Every Parmly Store app runs on the same simple idea — booking, clients, and money, in one place — tailored to how each industry actually works.</span>
+    <span class="cn">每个 Parmly Store 应用程序都基于同一个简单理念——预约、客户、财务一站式管理——并根据每个行业的实际运作方式量身定制。</span>
+    <span class="tc">每個 Parmly Store 應用程式都建基於同一個簡單理念——預約、客戶、財務一站式管理——但會因應每個行業嘅實際運作方式度身訂造。</span>
+  </div>
+
+  <div class="pgrid">
+    <div class="pcard live p-nail">
+      <div class="paccent"></div>
+      <div class="pstatus live"><div class="pstatus-dot"></div><span class="en">Live</span><span class="cn">已上线</span><span class="tc">現已推出</span></div>
+      <div class="pname">NailDesk</div>
+      <div class="ptag"><span class="en">For nail salons &amp; studios</span><span class="cn">专为美甲店及工作室打造</span><span class="tc">為美甲店及美甲工作室而設</span></div>
+      <div class="pdesc"><span class="en">Online booking, client notes, and income tracking — no monthly fees, ever.</span><span class="cn">在线预约、客户备注、收支记录——无月费。</span><span class="tc">網上預約、客戶備註、收支記錄——無月費。</span></div>
+      <a class="plink" href="https://naildesk.shop/hk" target="_blank" rel="noopener"><span class="en">Visit NailDesk →</span><span class="cn">前往 NailDesk →</span><span class="tc">前往 NailDesk →</span></a>
+    </div>
+
+    <div class="pcard p-train">
+      <div class="paccent"></div>
+      <div class="pstatus soon"><div class="pstatus-dot"></div><span class="en">Coming Soon</span><span class="cn">即将推出</span><span class="tc">即將推出</span></div>
+      <div class="pname">TrainDesk</div>
+      <div class="ptag"><span class="en">For personal trainers</span><span class="cn">专为私人教练打造</span><span class="tc">為私人教練而設</span></div>
+      <div class="pdesc"><span class="en">Session bookings, client progress, and payments — all sorted in one place.</span><span class="cn">课程预约、学员进度与收款，一目了然。</span><span class="tc">課堂預約、學員進度同收款，一目了然。</span></div>
+      <a class="plink" href="mailto:account@ollieconsult.com?subject=Notify%20me%20about%20TrainDesk"><span class="en">Get notified →</span><span class="cn">获取通知 →</span><span class="tc">獲取通知 →</span></a>
+    </div>
+
+    <div class="pcard p-pilates">
+      <div class="paccent"></div>
+      <div class="pstatus soon"><div class="pstatus-dot"></div><span class="en">Coming Soon</span><span class="cn">即将推出</span><span class="tc">即將推出</span></div>
+      <div class="pname">PilatesDesk</div>
+      <div class="ptag"><span class="en">For pilates studios</span><span class="cn">专为普拉提工作室打造</span><span class="tc">為普拉提工作室而設</span></div>
+      <div class="pdesc"><span class="en">Class bookings and studio management, simplified for instructors.</span><span class="cn">课程预约与工作室管理，化繁为简。</span><span class="tc">課堂預約同工作室管理，化繁為簡。</span></div>
+      <a class="plink" href="mailto:account@ollieconsult.com?subject=Notify%20me%20about%20PilatesDesk"><span class="en">Get notified →</span><span class="cn">获取通知 →</span><span class="tc">獲取通知 →</span></a>
+    </div>
+
+    <div class="pcard p-tutor">
+      <div class="paccent"></div>
+      <div class="pstatus soon"><div class="pstatus-dot"></div><span class="en">Coming Soon</span><span class="cn">即将推出</span><span class="tc">即將推出</span></div>
+      <div class="pname">TutorDesk</div>
+      <div class="ptag"><span class="en">For tutors &amp; tutoring businesses</span><span class="cn">专为导师及补习机构打造</span><span class="tc">為導師及補習社而設</span></div>
+      <div class="pdesc"><span class="en">Scheduling and billing for every student, all in one place.</span><span class="cn">每位学生的时间表与账单，一目了然。</span><span class="tc">每位學生嘅時間表同帳單，清清楚楚。</span></div>
+      <a class="plink" href="mailto:account@ollieconsult.com?subject=Notify%20me%20about%20TutorDesk"><span class="en">Get notified →</span><span class="cn">获取通知 →</span><span class="tc">獲取通知 →</span></a>
+    </div>
+
+    <div class="pcard p-salon">
+      <div class="paccent"></div>
+      <div class="pstatus soon"><div class="pstatus-dot"></div><span class="en">Coming Soon</span><span class="cn">即将推出</span><span class="tc">即將推出</span></div>
+      <div class="pname">SalonDesk</div>
+      <div class="ptag"><span class="en">For hair &amp; beauty salons</span><span class="cn">专为美发美容沙龙打造</span><span class="tc">為髮型及美容沙龍而設</span></div>
+      <div class="pdesc"><span class="en">Everything your salon needs to run day to day, without the extras.</span><span class="cn">沙龙日常运营所需的一切，尽在其中。</span><span class="tc">沙龍日常營運所需嘅一切，盡在其中。</span></div>
+      <a class="plink" href="mailto:account@ollieconsult.com?subject=Notify%20me%20about%20SalonDesk"><span class="en">Get notified →</span><span class="cn">获取通知 →</span><span class="tc">獲取通知 →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="slabel"><span class="en">Why Parmly Store</span><span class="cn">为什么选择 Parmly Store</span><span class="tc">點解揀 Parmly Store</span></div>
+  <div class="stitle"><span class="en">Small business software, without the bloat.</span><span class="cn">小企业软件，没有多余功能。</span><span class="tc">小生意軟件，唔使多餘功能。</span></div>
+  <div class="ssub">
+    <span class="en">We build one thing at a time, properly. Each Parmly Store app is designed around a single industry — so you get exactly what your business needs, with none of the features you'll never touch.</span>
+    <span class="cn">我们一次专注做好一件事。每个 Parmly Store 应用程序都围绕单一行业设计——让你恰好获得生意所需的功能，没有用不到的东西。</span>
+    <span class="tc">我哋一次專注做好一件事。每個 Parmly Store 應用程式都圍繞單一行業設計——等你啱啱好攞到生意所需嘅功能，冇多餘嘅嘢。</span>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-num">01</div>
+      <h3><span class="en">One industry, one app</span><span class="cn">一个行业，一个应用</span><span class="tc">一個行業，一個應用</span></h3>
+      <p><span class="en">No generic all-in-one platform to configure. Each app is purpose-built for how your industry actually works.</span><span class="cn">无需配置通用的全能平台。每个应用都专为你所在行业的实际运作方式而设计。</span><span class="tc">唔使自己配置通用嘅全能平台。每個應用程式都係為你嘅行業實際運作方式而設計。</span></p>
+    </div>
+    <div class="about-card">
+      <div class="about-num">02</div>
+      <h3><span class="en">Set up in days, not weeks</span><span class="cn">数天内即可上线</span><span class="tc">幾日內即可上線</span></h3>
+      <p><span class="en">Pay once, tell us about your business, and we get your app live — no lengthy onboarding process.</span><span class="cn">一次付款，告诉我们你的生意详情，我们即可为你上线应用程序——无需冗长的开通流程。</span><span class="tc">一次過付款，同我哋講吓你盤生意，我哋就會幫你上線——唔使經歷冗長嘅開通流程。</span></p>
+    </div>
+    <div class="about-card">
+      <div class="about-num">03</div>
+      <h3><span class="en">Real support from a real team</span><span class="cn">真人团队提供支援</span><span class="tc">真人團隊提供支援</span></h3>
+      <p><span class="en">Questions get answered by people who built the app — not a ticket queue.</span><span class="cn">你嘅问题会由亲手打造应用程序嘅团队解答——唔使排队等客服。</span><span class="tc">你嘅問題會由親手打造應用程式嘅團隊解答——唔使排隊等客服。</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="slabel" style="color:var(--nude)"><span class="en">Get In Touch</span><span class="cn">联系我们</span><span class="tc">聯絡我們</span></div>
+  <div class="stitle"><span class="en">Have a question, or want early access to an upcoming app?</span><span class="cn">有疑问，或想抢先体验即将推出的应用程序？</span><span class="tc">有疑問，或者想搶先試用未來推出嘅應用程式？</span></div>
+  <div class="ssub"><span class="en">Tell us about your business and we'll point you to the right app — or let you know the moment it's ready.</span><span class="cn">告诉我们你的生意情况，我们会为你推荐合适的应用程序——或在其上线时第一时间通知你。</span><span class="tc">同我哋講吓你盤生意，我哋會幫你揀啱合適嘅應用程式——或者一推出就即時通知你。</span></div>
+  <a class="bp" href="mailto:account@ollieconsult.com?subject=Parmly%20Store%20Enquiry"><span class="en">Email Us →</span><span class="cn">发邮件给我们 →</span><span class="tc">電郵聯絡我哋 →</span></a>
+</section>
+
+<footer>
+  <div class="flogo">Parmly Store</div>
+  <div class="flinks">
+    <a onclick="document.getElementById('products')?.scrollIntoView({behavior:'smooth'})" href="javascript:void(0)"><span class="en">Our Apps</span><span class="cn">我们的应用程序</span><span class="tc">我哋嘅應用程式</span></a>
+    <a onclick="document.getElementById('about')?.scrollIntoView({behavior:'smooth'})" href="javascript:void(0)"><span class="en">About</span><span class="cn">关于我们</span><span class="tc">關於我哋</span></a>
+    <a href="mailto:account@ollieconsult.com"><span class="en">Contact</span><span class="cn">联系我们</span><span class="tc">聯絡我哋</span></a>
+    <a href="/">English (AU)</a>
+  </div>
+  <div class="fcopy">© 2026 Parmly Store</div>
+</footer>
+
+<script>
+function setLang(lang){
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'cn' ? 'zh-Hans' : 'zh-Hant');
+  try{ localStorage.setItem('parmly_lang_hk', lang); }catch(e){}
+  updateBtn();
+}
+function nextLang(cur){
+  if(cur === 'tc') return 'en';
+  if(cur === 'en') return 'cn';
+  return 'tc';
+}
+function toggleLang(){
+  const cur = document.documentElement.getAttribute('data-lang') || 'tc';
+  setLang(nextLang(cur));
+}
+function updateBtn(){
+  const btn = document.getElementById('langToggle');
+  if(!btn) return;
+  const cur = document.documentElement.getAttribute('data-lang') || 'tc';
+  const labels = {tc:'EN', en:'簡', cn:'繁'};
+  btn.textContent = labels[cur];
+}
+updateBtn();
+</script>
+
+</body>
+</html>
