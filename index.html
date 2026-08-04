@@ -434,10 +434,45 @@
       <div class="name">${d.name}</div>
       <div class="vertical">${d.vertical}</div>
       <p class="copy">${d.copy}</p>
-      <a href="${d.link || '#'}" class="tile-cta">${d.cta}</a>
+      <a href="${d.link || 'javascript:void(0)'}" class="tile-cta" ${d.link ? '' : `onclick="openNotify('${d.name}')"`}>${d.cta}</a>
     `;
     mosaic.appendChild(tile);
   });
+
+  let notifyDeskName = '';
+  function openNotify(name){
+    notifyDeskName = name;
+    document.getElementById('notifyTitle').textContent = 'Notify me — ' + name;
+    document.getElementById('notifyForm').reset();
+    document.getElementById('notifyForm').style.display = '';
+    document.getElementById('notifyThanks').style.display = 'none';
+    document.getElementById('notifyOverlay').classList.add('open');
+  }
+  function closeNotify(){
+    document.getElementById('notifyOverlay').classList.remove('open');
+  }
+  async function submitNotify(e){
+    e.preventDefault();
+    const btn = document.getElementById('notifySubmitBtn');
+    btn.disabled = true; btn.textContent = 'Sending...';
+    const data = {
+      desk: notifyDeskName,
+      name: document.getElementById('notifyName').value,
+      email: document.getElementById('notifyEmail').value,
+      phone: document.getElementById('notifyPhone').value,
+      business: document.getElementById('notifyBusiness').value,
+    };
+    try {
+      await fetch('https://formspree.io/f/mljrrlnl', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(data)
+      });
+    } catch(err) {}
+    document.getElementById('notifyForm').style.display = 'none';
+    document.getElementById('notifyThanks').style.display = '';
+    btn.disabled = false; btn.textContent = 'Notify me';
+  }
 
   const tiles = document.querySelectorAll('.tile');
   const io = new IntersectionObserver((entries)=>{
