@@ -284,6 +284,18 @@
     letter-spacing:0.04em;
     color:var(--ink-soft);
   }
+
+  /* ---------- Notify modal ---------- */
+  .modal-overlay{position:fixed;inset:0;background:rgba(43,40,34,0.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:999;}
+  .modal-overlay.open{display:flex;}
+  .modal-card{background:var(--paper-raised);border-radius:4px;padding:34px;max-width:380px;width:100%;position:relative;}
+  .modal-close{position:absolute;top:14px;right:14px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink-soft);line-height:1;}
+  .modal-card h3{font-family:'Fraunces',serif;font-weight:500;margin:8px 0 6px;font-size:1.3rem;}
+  .modal-sub{font-size:0.85rem;color:var(--ink-soft);margin-bottom:20px;}
+  .modal-card form{display:flex;flex-direction:column;gap:11px;}
+  .modal-card input{font-size:0.85rem;padding:11px 13px;border-radius:3px;border:1px solid var(--line);font-family:inherit;background:var(--paper);color:var(--ink);}
+  .modal-card .btn{margin-top:8px;width:100%;}
+  .modal-thanks{font-size:0.9rem;color:var(--moss);font-weight:500;}
 </style>
 </head>
 <body>
