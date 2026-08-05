@@ -410,6 +410,23 @@
   </div>
 </footer>
 
+  <div class="modal-overlay" id="notifyOverlay">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeNotify()" aria-label="Close">&times;</button>
+      <span class="eyebrow">Coming soon</span>
+      <h3 id="notifyTitle">Notify me</h3>
+      <p class="modal-sub">Leave your details and we'll email you the day this Desk opens.</p>
+      <form id="notifyForm" onsubmit="submitNotify(event)">
+        <input type="text" id="notifyName" placeholder="Full name" required>
+        <input type="email" id="notifyEmail" placeholder="Email address" required>
+        <input type="tel" id="notifyPhone" placeholder="Contact number" required>
+        <input type="text" id="notifyBusiness" placeholder="Business name (optional)">
+        <button type="submit" id="notifySubmitBtn" class="btn btn-solid">Notify me</button>
+      </form>
+      <p class="modal-thanks" id="notifyThanks" style="display:none;">Thanks — we'll be in touch!</p>
+    </div>
+  </div>
+
 <script>
   // minimal thin-line icons, single stroke, matching the editorial reference style
   const icons = {
