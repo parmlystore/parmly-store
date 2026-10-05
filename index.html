@@ -27,6 +27,7 @@
 
 *{box-sizing:border-box; margin:0; padding:0;}
 html{scroll-behavior:smooth;}
+section[id]{scroll-margin-top:32px;}
 body{
 background:var(--paper);
 color:var(--ink);
@@ -227,6 +228,8 @@ transition:opacity .15s ease;
 .features{padding:110px 0; border-top:1px solid var(--line); margin-top:0;}
 .feat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:44px;}
 @media (max-width:820px){ .feat-grid{grid-template-columns:1fr;} }
+.feat-single{grid-template-columns:1fr; max-width:520px; margin:0 auto; text-align:center;}
+.feat-single .feat-dot{margin-left:auto; margin-right:auto;}
 .feat-dot{width:8px; height:8px; border-radius:50%; margin-bottom:18px;}
 .feat h3{font-family:'Fraunces', serif; font-weight:500; font-size:1.2rem; margin-bottom:10px;}
 .feat p{color:var(--ink-soft); font-size:0.94rem;}
@@ -261,6 +264,13 @@ font-size:0.92rem;
 }
 .plan-features li:first-child{border-top:none;}
 .plan-card .btn{width:100%;}
+.pricing{padding:70px 0 110px;}
+.plans.plans-two{grid-template-columns:repeat(2,1fr); max-width:820px;}
+@media (max-width:720px){ .plans.plans-two{grid-template-columns:1fr;} }
+.plan-name{font-family:'Jost', sans-serif; font-size:0.75rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink-soft);}
+.setup-card{max-width:820px; margin:24px auto 0;}
+.setup-card h3{font-family:'Fraunces', serif; font-weight:500; font-size:1.5rem; margin:10px 0 22px;}
+.setup-card .plan-features{margin-bottom:26px;}
 .plan-ctas{display:flex;flex-direction:column;gap:10px;margin-top:8px;}
 .plan-demo-link{display:block;text-align:center;font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:0.04em;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;padding:4px 0;}
 .plan-demo-link:hover{color:var(--moss);}
@@ -338,7 +348,7 @@ color:var(--ink-soft);
 <section class="hero">
 <div class="wrap">
 <span class="eyebrow">You do operation, we do management</span>
-<h1>Running a service business?<br><em>There's a Desk</em> for that.</h1>
+<h1>Running a service business?<br>There's a Desk for that.</h1>
 <p>One focused booking, client and finance app per industry — nothing bloated, nothing you don't need.</p>
 <div class="hero-ctas">
 <a href="#directory" class="btn btn-solid">Get started</a>
@@ -361,21 +371,11 @@ color:var(--ink-soft);
 
 <section class="features" id="features">
 <div class="wrap">
-<div class="feat-grid">
+<div class="feat-grid feat-single">
 <div class="feat">
 <div class="feat-dot" style="background:var(--moss)"></div>
 <h3>One price, one Desk</h3>
 <p>Each Desk has a single flat price — no per-seat fees, no hidden tiers. Add another Desk only when your business needs it.</p>
-</div>
-<div class="feat">
-<div class="feat-dot" style="background:var(--terracotta)"></div>
-<h3>Set up in 3 days</h3>
-<p>No lengthy onboarding calls or configuration. Import your clients, pick your calendar, and start taking bookings.</p>
-</div>
-<div class="feat">
-<div class="feat-dot" style="background:var(--sage)"></div>
-<h3>One account, every Desk</h3>
-<p>Your Parmly login carries across every Desk product as you add them — one bill, one client list, no re-signup.</p>
 </div>
 </div>
 </div>
@@ -384,27 +384,48 @@ color:var(--ink-soft);
 <section class="pricing" id="pricing">
 <div class="wrap">
 <div class="section-head">
-<span class="eyebrow">Full-service support</span>
-<h2>We handle the<br>business side, too.</h2>
-<p>Beyond the software, our team can set your business up from the ground up.</p>
+<span class="eyebrow">Packages</span>
+<h2>One price. No monthly fees. Ever.</h2>
 </div>
-<div class="plans" style="grid-template-columns:1fr; max-width:620px;">
-<div class="plan-card plan-featured">
-<span class="plan-badge">Full-Service</span>
-<span class="eyebrow">Business support</span>
-<p class="plan-note" style="margin-top:16px; font-size:0.95rem;">We also provide business registration, bookkeeping, payroll and super setup — plus tax, BAS and tax return support.</p>
+<div class="plans plans-two">
+<div class="plan-card">
+<div class="plan-name">Basic</div>
+<div class="plan-price">$99</div>
+<div class="plan-note">AUD · one-time</div>
 <ul class="plan-features">
-<li>ABN &amp; business registration</li>
-<li>Bookkeeping</li>
-<li>Payroll setup</li>
-<li>Superannuation setup</li>
-<li>Tax, BAS &amp; tax return support</li>
+<li>Full management app</li>
+<li>Clients, finances, price list</li>
+<li>Manual calendar entry</li>
 </ul>
-<div class="plan-ctas"><a href="mailto:account@ollieconsult.com" class="btn btn-solid">Contact us</a></div>
+</div>
+<div class="plan-card plan-featured">
+<span class="plan-badge">Most popular</span>
+<div class="plan-name">Pro</div>
+<div class="plan-price">$399</div>
+<div class="plan-note">AUD · one-time</div>
+<ul class="plan-features">
+<li>Everything in Basic</li>
+<li>24/7 online booking link</li>
+<li>Email confirmation + reminder</li>
+<li>Double-booking protection</li>
+<li>Deposit + bank instructions</li>
+</ul>
 </div>
 </div>
+<div class="plan-card setup-card">
+<div class="plan-name">Studio</div>
+<h3>Need to set up your business?</h3>
+<ul class="plan-features">
+<li>Everything in Pro</li>
+<li>Custom logo + colour design</li>
+<li>Business setup support</li>
+<li>Payroll &amp; super setup</li>
+<li>Accounting software setup</li>
+<li>BAS, income tax &amp; PAYG support</li>
+</ul>
+<a class="btn btn-outline" href="mailto:account@ollieconsult.com?subject=StudioDesk%20Studio%20Enquiry">Enquire for Studio</a>
 </div>
-
+</div>
 </section>
 
 <section class="faq" id="faq">
@@ -436,7 +457,6 @@ color:var(--ink-soft);
 </section>
 
 <div class="cta-band">
-<h2>Find the Desk built for your business.</h2>
 <h2>Find the Desk built for your business.</h2>
 <p>Join the list for your industry and we'll email you the day it opens.</p>
 <a href="mailto:account@ollieconsult.com" class="btn btn-solid">Explore other Desks for your business</a>
@@ -556,4 +576,4 @@ tiles.forEach(t=>io.observe(t));
 
 <script src="//code.tidio.co/ybpkfjwlbxz38mpshf3o4oobe1ramlrw.js" async></script>
 </body>
-</html>Page_UpPage_UpPage_UpPage_UpPage_UpPage_UpPage_UpPage_UpPage_UpPage_UpPage_UpPage_Up
+</html>
